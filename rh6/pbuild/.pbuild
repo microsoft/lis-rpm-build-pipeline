@@ -1,0 +1,106 @@
+#
+# Configuration file for pbuild.  This file is normally stored in ~/.pbuild,
+# but can be customized with environment variable "PBUILD" (full path).
+#
+
+#
+# Default log file location
+# With no customization, you get:  "~/"  (expanded to your home directory)
+#
+# You can customize with lines like the following:
+ 
+# logdir_prior: ~/pbuild_logs/prior
+#
+# If specified, logdir_prior forms a logfile directory that log files are
+# moved to prior to pbuild starting up.  This allows you to save one level
+# of prior log files from pbuild.
+#
+# Be certain to create the logfile directory prior to running pbuild
+
+#
+# Default selector to build if unspecified on command line.
+#
+# NOTE: This line must appear before all host entries to be handled properly!
+#
+# You can customize with a line like the following:
+# select: om
+
+select: om
+
+#
+# Systems to exclude in the build:
+# With no customization, you get:  ""
+#
+# You can customize with a line like the following:
+# exclude: sun_5.8_sparc,suse_9_32
+
+#
+# Settings that may be customized:
+# With no cusomization, you get:
+#   "CheckValidity,Debug,DeleteLogfiles,NoDiagnoseErrors,NoLogfileRename,NoLogfileSelect,Progress,SummaryScreen"
+#
+# You can customize with a line like the following:
+#
+# settings: LogfileRename
+
+#
+# Per-project configuration options:
+#   Keyword:Project:value
+#
+# Valid keywords:  make_target, configure_options
+# configure_options : nip : --dev
+
+#
+# Test settings that may be customized:
+# Attributes are controlled with "test_attributes",
+# Test names are controlled with "test_names".
+#
+# With no customization, you get all tests (no restrictions)
+#
+# You can customize with a line like the following:
+#
+# test_attributes: -slow
+# test_names: atomic,condition
+
+#
+# This rest of the file contains lines with three pieces of information per
+# line (space separated):
+#   Optional: "Host:" constant to specify that this is a host entry
+#   Key (name for referring to the entry)
+#   Host name (DNS name or IP address)
+#   Directory path on host
+#   Project (must specify selector to specify project)
+#      Project must be one of:
+#         om (for Operations Manager),
+#         oms (for Operatations Management Suite), or
+#         a host of others (see documentation)
+#   Optional: Select specification (to match with command line and/or default)
+#      If a select entry is specified, you MUST specify a selector to build with
+#      This is useful if you build multiple projects. If you only build one
+#      project, then you need not specify the select specification.
+
+# Lis 4.0 branch build rpm
+
+host:   centos60x64     	192.168.222.67      ~/rpmbuild/SOURCES       om
+host:   centos60x32     	192.168.222.55      ~/rpmbuild/SOURCES       om
+host:   centos61x64		192.168.222.34       ~/rpmbuild/SOURCES       om
+host:   centos61x32		192.168.222.66       ~/rpmbuild/SOURCES       om
+host:   centos62x64     	192.168.222.20       ~/rpmbuild/SOURCES       om
+host:   centos62x32     	192.168.222.65       ~/rpmbuild/SOURCES       om
+host:   centos63x64     	192.168.222.46       ~/rpmbuild/SOURCES       om
+host:   centos63x32     	192.168.222.63       ~/rpmbuild/SOURCES       om
+host:   centos64x64     	192.168.222.38       ~/rpmbuild/SOURCES       om
+host:   centos64x64_update     	192.168.222.62       ~/rpmbuild/SOURCES       om
+host:   centos64x32     	192.168.222.22       ~/rpmbuild/SOURCES       om
+host:   centos65x64	        192.168.222.9       ~/rpmbuild/SOURCES       om
+host:   centos65x32	        192.168.222.44       ~/rpmbuild/SOURCES       om
+host:   centos66x64	        192.168.222.36       ~/rpmbuild/SOURCES       om
+host:   centos66x32	        192.168.222.23       ~/rpmbuild/SOURCES       om
+host:   centos67x64     	192.168.222.33       ~/rpmbuild/SOURCES       om
+host:   centos67x32     	192.168.222.24       ~/rpmbuild/SOURCES       om
+host:   centos68x64     	192.168.222.32       ~/rpmbuild/SOURCES       om
+host:   centos68x32     	192.168.222.25       ~/rpmbuild/SOURCES       om
+host:   centos69x64     	192.168.222.13       ~/rpmbuild/SOURCES       om
+host:   centos69x32     	192.168.222.37       ~/rpmbuild/SOURCES       om
+
+logdir: /root/lis-rpm-build-pipeline1/Log/rh6
