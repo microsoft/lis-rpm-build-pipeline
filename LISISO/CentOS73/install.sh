@@ -22,8 +22,8 @@ regex9='3.10.0-514.41.1'
 if [[ "$kernelver" =~ $regex ]]; then
    {
         cd update
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
          echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
          rpm -ivh $kmodrpm $msrpm
@@ -41,8 +41,8 @@ if [[ "$kernelver" =~ $regex ]]; then
 elif [[ "$kernelver" =~ $regex3 ]] || [[ "$kernelver" =~ $regex4 ]]   ; then
     {
         cd update3
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -64,8 +64,8 @@ elif [[ "$kernelver" =~ $regex3 ]] || [[ "$kernelver" =~ $regex4 ]]   ; then
 elif [[ "$kernelver" =~ $regex5 ]] ; then
     {
         cd update4
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -87,8 +87,8 @@ elif [[ "$kernelver" =~ $regex5 ]] ; then
 elif [[ "$kernelver" =~ $regex6 ]] ; then
     {
         cd update5
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -109,8 +109,8 @@ elif [[ "$kernelver" =~ $regex6 ]] ; then
 elif [[ "$kernelver" =~ $regex7 ]] ; then
     {
         cd update6
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -132,8 +132,8 @@ elif [[ "$kernelver" =~ $regex7 ]] ; then
 elif [[ "$kernelver" =~ $regex8 ]] ; then
     {
         cd update7
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -155,8 +155,8 @@ elif [[ "$kernelver" =~ $regex8 ]] ; then
 elif [[ "$kernelver" =~ $regex9 ]] ; then
     {
         cd update8
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -179,8 +179,8 @@ elif [[ "$kernelver" =~ $regex9 ]] ; then
 elif [[ "$kernelver" =~ $regex2 ]] ; then
     {
         cd update2
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -202,8 +202,8 @@ elif [[ "$kernelver" =~ $regex2 ]] ; then
 elif [[ "$kernelver" =~ $regex1 ]] ; then 
     {
 	cd update1
-        kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
            echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
            rpm -ivh $kmodrpm $msrpm
@@ -224,8 +224,8 @@ elif [[ "$kernelver" =~ $regex1 ]] ; then
 
 elif [ "$kernelver" == "3.10.0-514.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.2.2.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.1.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.2.el7.x86_64" ] ;then
    {
-	kmodrpm=`ls kmod-microsoft-hyper-v-4*.x86_64.rpm`
-        msrpm=`ls microsoft-hyper-v-4*.x86_64.rpm`
+	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
 	  echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
