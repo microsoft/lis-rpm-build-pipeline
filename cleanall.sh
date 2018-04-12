@@ -109,6 +109,7 @@ rm -rf LISISO/RHEL74/update2/*.rpm
 rm -rf LISISO/RHEL74/update3/*.rpm
 rm -rf LISISO/RHEL74/update4/*.rpm
 rm -rf LISISO/RHEL74/update5/*.rpm
+rm -rf LISISO/RHEL75/*.rpm
 
 #cleanup rhel  7.0
 rm -rf LISISO/CentOS70/*.rpm
@@ -130,6 +131,7 @@ rm -rf LISISO/CentOS74/update2/*.rpm
 rm -rf LISISO/CentOS74/update3/*.rpm
 rm -rf LISISO/CentOS74/update4/*.rpm
 rm -rf LISISO/CentOS74/update5/*.rpm
+rm -rf LISISO/CentOS75/*.rpm
 
 #cleanup oracle  7.0
 rm -rf LISISO/Oracle70/*.rpm
@@ -151,6 +153,7 @@ rm -rf LISISO/Oracle74/update2/*.rpm
 rm -rf LISISO/Oracle74/update3/*.rpm
 rm -rf LISISO/Oracle74/update4/*.rpm
 rm -rf LISISO/Oracle74/update5/*.rpm
+rm -rf LISISO/Oracle75/*.rpm
 
 #cleanup rhel  6.0
 rm -rf LISISO/RHEL60/*.rpm
@@ -178,7 +181,7 @@ rm -rf LISISO/CentOS67/*.rpm
 rm -rf LISISO/CentOS68/*.rpm
 rm -rf LISISO/CentOS69/*.rpm
 
-#cleanup oracle  7.0
+#cleanup oracle  6.0
 rm -rf LISISO/Oracle60/*.rpm
 rm -rf LISISO/Oracle61/*.rpm
 rm -rf LISISO/Oracle62/*.rpm

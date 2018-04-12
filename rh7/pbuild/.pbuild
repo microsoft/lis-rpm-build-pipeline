@@ -99,4 +99,6 @@ host:   centos74x64_UPDATE3     192.168.222.0       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE4     192.168.222.35       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE5     192.168.222.39       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE6     192.168.222.74       ~/rpmbuild/SOURCES       om
+host:   centos75x64		192.168.222.30       ~/rpmbuild/SOURCES       om
 
+logdir: /root/lis-rpm-build-pipeline/Log/rh7

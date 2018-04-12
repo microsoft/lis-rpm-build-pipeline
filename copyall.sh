@@ -391,6 +391,11 @@ echo "copying root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHE
 scp -r root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL74/update6/
 scp -r root@${centos74x64update6}:/root/rpmbuild/SRPMS/* LISISO/RHEL74/update6/
 
+echo "copying root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL75/"
+#copying file from RHEL7.5
+scp -r root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL75/
+scp -r root@${centos75x64}:/root/rpmbuild/SRPMS/* LISISO/RHEL75/
+
 #copying file from CentOS7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS70/"
 scp -r root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS70/
@@ -496,6 +501,11 @@ echo "copying root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/Cen
 scp -r root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS74/update6/
 scp -r root@${centos74x64update6}:/root/rpmbuild/SRPMS/* LISISO/CentOS74/update6/
 
+echo "copying root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS75/"
+#copying file from CentOS7.5
+scp -r root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS75/
+scp -r root@${centos75x64}:/root/rpmbuild/SRPMS/* LISISO/CentOS75/
+
 #copying file from Oracle7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle70/"
 scp -r root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle70/
@@ -600,6 +610,11 @@ echo "copying root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/Ora
 #copying file from Oracle7.4_update6
 scp -r root@${centos74x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle74/update6/
 scp -r root@${centos74x64update6}:/root/rpmbuild/SRPMS/* LISISO/Oracle74/update6/
+
+echo "copying root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle74/"
+#copying file from Oracle7.5
+scp -r root@${centos75x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle75/
+scp -r root@${centos75x64}:/root/rpmbuild/SRPMS/* LISISO/Oracle75/
 
 #copying file from Oracle6.4
 scp -r root@${centos64x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle64/
