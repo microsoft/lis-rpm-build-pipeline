@@ -3,7 +3,7 @@
 # Microsoft Hyper-V
 #
 ################################################################
-
+kernelver=`uname -r`
 regex1='3.10.0-862.2.3'
 
 if [[ "$kernelver" =~ $regex1 ]]; then
