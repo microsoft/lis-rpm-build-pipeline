@@ -29,6 +29,8 @@ if [[ "$kernelver" =~ $regex1 ]]; then
 
 #Making sure both rpms are present
 elif [ "$kernelver" == "3.10.0-862.el7.x86_64" ] ;then
+	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
 	echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
 	rpm -ivh $kmodrpm
