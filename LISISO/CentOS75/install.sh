@@ -6,10 +6,30 @@
 ################################################################################
 kernelver=`uname -r`
 regex1='3.10.0-862.2.3'
+regex2='3.10.0-862.3.2'
 
 if [[ "$kernelver" =~ $regex1 ]]; then
    {
         cd update1
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
+        if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
+         echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
+         rpm -ivh $kmodrpm $msrpm
+         kmodexit=$?
+         if [ "$kmodexit" != 0 ]; then
+            echo "Microsoft-Hyper-V RPM installation failed, Exiting."
+            exit 1;
+         else
+            echo " Linux Integration Services for Hyper-V has been installed. Please reboot your system."
+            exit 0
+         fi
+        fi
+   }
+
+if [[ "$kernelver" =~ $regex2 ]]; then
+   {
+        cd update2
         kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
         msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
@@ -51,5 +71,10 @@ elif [ "$kernelver" == "3.10.0-862.el7.x86_64" ] ;then
 	else 
        		echo "RPM's are missing"
 	fi
+
+else
+        echo "Kernel version not supported, Exiting."
+        exit 1
 fi
+
 
