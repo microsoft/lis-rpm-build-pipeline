@@ -24,7 +24,7 @@ if [[ "$kernelver" =~ $regex1 ]]; then
 	fi
 }
 
-if [[ "$kernelver" =~ $regex2 ]]; then
+elif [[ "$kernelver" =~ $regex2 ]]; then
    {
         cd update2
         kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
