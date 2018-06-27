@@ -7,6 +7,7 @@ kernelver=`uname -r`
 regex1='3.10.0-862.2.3'
 regex2='3.10.0-862.3.2'
 regex3='3.10.0-862.3.3'
+regex4='3.10.0-862.6.3'
 
 if [[ "$kernelver" =~ $regex1 ]]; then
    {
@@ -45,6 +46,23 @@ elif [[ "$kernelver" =~ $regex2 ]]; then
 elif [[ "$kernelver" =~ $regex3 ]]; then
    {
         cd update3
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
+        if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
+        rpm -Uvh $kmodrpm $msrpm
+        msexit=$?
+        if [ "$msexit" != 0 ]; then
+               echo "Microsoft-Hyper-V rpm Upgradation failed, Exiting"
+               exit 1;
+        else
+               echo " Linux Integration Services for Hyper-V has been Upgraded. Please reboot your system"
+        fi
+        fi
+}
+
+elif [[ "$kernelver" =~ $regex4 ]]; then
+   {
+        cd update4
         kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
         msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
         if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
