@@ -11,9 +11,9 @@ Runbuild()
 #       rpmbuild --clean /root/rpmbuild/SPECS/lis-rhel7.spec
 #	rpmbuild --clean /root/rpmbuild/SPECS/lis-centos7.spec
 	rpmbuild --clean /root/rpmbuild/SPECS/lis-oracle7.spec
-#        rpmbuild -ba /root/rpmbuild/SPECS/lis-rhel7.spec
+        rpmbuild -ba /root/rpmbuild/SPECS/lis-rhel7.spec
 #	rpmbuild --ba /root/rpmbuild/SPECS/lis-centos7.spec
-	rpmbuild --ba /root/rpmbuild/SPECS/lis-oracle7.spec
+#	rpmbuild --ba /root/rpmbuild/SPECS/lis-oracle7.spec
 }
 
 
