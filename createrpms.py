@@ -28,15 +28,13 @@ def updatebuildname(path, buildname):
    file_list.append(file)
 
  file_list = [path+list for list in file_list ]
-
+ 
  for file in file_list:
   with open(file, "r") as myfile:
    for line in myfile :
     if regex  in line:
      linetosearch = line.split(' ')
      currentversion = linetosearch[-1].strip('\n')
-
- for file in file_list:
   cmdstring = "sed -i 's/%s/%s/g' %s" % (currentversion,buildname, file)
   run(cmdstring)
 
