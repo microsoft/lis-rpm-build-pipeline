@@ -209,6 +209,7 @@ rm -rf LISISO/RHEL66/*.rpm
 rm -rf LISISO/RHEL67/*.rpm
 rm -rf LISISO/RHEL68/*.rpm
 rm -rf LISISO/RHEL69/*.rpm
+rm -rf LISISO/RHEL610/*.rpm
 
 #cleanup centos 6.0
 rm -rf LISISO/CentOS60/*.rpm
@@ -222,6 +223,8 @@ rm -rf LISISO/CentOS66/*.rpm
 rm -rf LISISO/CentOS67/*.rpm
 rm -rf LISISO/CentOS68/*.rpm
 rm -rf LISISO/CentOS69/*.rpm
+rm -rf LISISO/CentOS610/*.rpm
+
 
 #cleanup oracle  6.0
 rm -rf LISISO/Oracle60/*.rpm
