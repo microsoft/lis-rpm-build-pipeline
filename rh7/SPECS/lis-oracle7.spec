@@ -37,11 +37,11 @@ BuildRequires:          %kernel_module_package_buildreqs
 %else
 BuildRequires:          %kernel_module_package_buildreqs
 %endif
-Requires:               microsoft-hyper-v-kmod = 4.2.5.3
+Requires:               microsoft-hyper-v-kmod = autogen
 License:		GPLv2+
 Group:			System/Kernel
 Summary:		Microsoft hyper-v drivers and utilities
-Version:		4.2.5.3
+Version:		autogen
 Release:		%{release}
 Source0:		lis-next-rh7.tar.gz	
 BuildRoot:		%{_tmppath}/%{name}-%{version}-build
@@ -73,7 +73,7 @@ cp tools/hv_fcopy_daemon.c %_sourcedir/
 set -- *
 mkdir source
 mv "$@" source/
-sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"test"/g' source/include/linux/hv_compat.h
+sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"autogen"/g' source/include/linux/hv_compat.h
 sed -i 's/hv_context.guestid = generate_guest_id(0x20, LINUX_VERSION_CODE, 0);/hv_context.guestid = generate_guest_id(0x22, LINUX_VERSION_CODE, 0);/g' source/hv.c
 
 mkdir obj
