@@ -37,11 +37,11 @@ BuildRequires:          %kernel_module_package_buildreqs
 %else
 BuildRequires:          %kernel_module_package_buildreqs
 %endif
-Requires:               microsoft-hyper-v-kmod = autogen 
+Requires:               microsoft-hyper-v-kmod = 4.2.5.3
 License:		GPLv2+
 Group:			System/Kernel
 Summary:		Microsoft hyper-v drivers and utilities
-Version:		autogen
+Version:		4.2.5.3
 Release:		%{release}
 Source0:		lis-next-rh7.tar.gz	
 BuildRoot:		%{_tmppath}/%{name}-%{version}-build
