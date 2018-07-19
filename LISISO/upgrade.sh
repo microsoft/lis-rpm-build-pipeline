@@ -118,8 +118,10 @@ GetDistroVersion()
 		# If a 6.x kernel
 		#
 		elif [ "2.6.32" == ${kernelVersion} ];then
-			if [ ${kernelChange} -ge 697 ]; then
+			if [ ${kernelChange} -ge 755 ]; then
                                 distro_version='unknown'
+			elif [ ${kernelChange} -ge 754 ]; then
+                                distro_version='610'
                         elif [ ${kernelChange} -ge 696 ]; then
                                 distro_version='69'
                         elif [ ${kernelChange} -ge 642 ]; then
