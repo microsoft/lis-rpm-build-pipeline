@@ -390,6 +390,12 @@ echo "copying root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/RH
 scp -r root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL73/update13/
 scp -r root@${centos73x64update13}:/root/rpmbuild/SRPMS/* LISISO/RHEL73/update13/
 
+echo "copying root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL73/update14/"
+#copying file from RHEL7.3_update14
+scp -r root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL73/update14/
+scp -r root@${centos73x64update14}:/root/rpmbuild/SRPMS/* LISISO/RHEL73/update14/
+
+
 echo "copying root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL74/"
 #copying file from RHEL7.4
 scp -r root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL74/
@@ -469,6 +475,11 @@ echo "copying root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHE
 #copying file from RHEL7.5_update5
 scp -r root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL75/update5/
 scp -r root@${centos75x64update5}:/root/rpmbuild/SRPMS/* LISISO/RHEL75/update5/
+
+echo "copying root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL75/update6"
+#copying file from RHEL7.5_update6
+scp -r root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL75/update6/
+scp -r root@${centos75x64update6}:/root/rpmbuild/SRPMS/* LISISO/RHEL75/update6/
 
 #copying file from CentOS7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS70/"
@@ -560,6 +571,11 @@ echo "copying root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/Ce
 scp -r root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS73/update13/
 scp -r root@${centos73x64update13}:/root/rpmbuild/SRPMS/* LISISO/CentOS73/update13/
 
+echo "copying root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS73/update14/"
+#copying file from RHEL7.3_update14
+scp -r root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS73/update14/
+scp -r root@${centos73x64update14}:/root/rpmbuild/SRPMS/* LISISO/CentOS73/update14/
+
 echo "copying root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS74/"
 #copying file from CentOS7.4
 scp -r root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS74/
@@ -639,6 +655,11 @@ echo "copying root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/Cen
 #copying file from CentOS7.5_update5
 scp -r root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS75/update5/
 scp -r root@${centos75x64update5}:/root/rpmbuild/SRPMS/* LISISO/CentOS75/update5/
+
+echo "copying root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS75/update6/"
+#copying file from CentOS7.5_updat6
+scp -r root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS75/update6/
+scp -r root@${centos75x64update6}:/root/rpmbuild/SRPMS/* LISISO/CentOS75/update6/
 
 #copying file from Oracle7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle70/"
@@ -730,6 +751,11 @@ echo "copying root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/Or
 scp -r root@${centos73x64update13}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle73/update13/
 scp -r root@${centos73x64update13}:/root/rpmbuild/SRPMS/* LISISO/Oracle73/update13/
 
+echo "copying root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle73/update14/"
+#copying file from Oracle7.3_update14
+scp -r root@${centos73x64update14}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle73/update14/
+scp -r root@${centos73x64update14}:/root/rpmbuild/SRPMS/* LISISO/Oracle73/update14/
+
 echo "copying root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle74/"
 #copying file from Oracle7.4
 scp -r root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle74/
@@ -809,6 +835,11 @@ echo "copying root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/Ora
 #copying file from Oracle7.5_update5
 scp -r root@${centos75x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle75/update5/
 scp -r root@${centos75x64update5}:/root/rpmbuild/SRPMS/* LISISO/Oracle75/update5/
+
+echo "copying root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle75/update6"
+#copying file from Oracle7.5_update6
+scp -r root@${centos75x64update6}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle75/update6/
+scp -r root@${centos75x64update6}:/root/rpmbuild/SRPMS/* LISISO/Oracle75/update6/
 
 #copying file from Oracle6.4
 scp -r root@${centos64x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle64/
