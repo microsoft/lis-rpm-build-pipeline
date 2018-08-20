@@ -23,7 +23,7 @@ regex10='3.10.0-514.44.1'
 regex11='3.10.0-514.48.1'
 regex12='3.10.0-514.48.3'
 regex13='3.10.0-514.48.5'
-regex14='3.10.0-514.53.1'
+regex14='3.10.0-514.55.4'
 if [[ "$kernelver" =~ $regex ]]; then
    {
         cd update
@@ -341,6 +341,7 @@ elif [[ "$kernelver" =~ $regex14 ]] ; then
         fi
 
     }
+
 
 elif [ "$kernelver" == "3.10.0-514.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.2.2.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.1.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.2.el7.x86_64" ] ;then
    {
