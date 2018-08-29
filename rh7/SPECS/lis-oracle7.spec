@@ -37,11 +37,11 @@ BuildRequires:          %kernel_module_package_buildreqs
 %else
 BuildRequires:          %kernel_module_package_buildreqs
 %endif
-Requires:               microsoft-hyper-v-kmod = autogen
+Requires:               microsoft-hyper-v-kmod = master
 License:		GPLv2+
 Group:			System/Kernel
 Summary:		Microsoft hyper-v drivers and utilities
-Version:		autogen
+Version:		master
 Release:		%{release}
 Source0:		lis-next-rh7.tar.gz	
 BuildRoot:		%{_tmppath}/%{name}-%{version}-build
@@ -57,8 +57,6 @@ cp tools/hv_get_dns_info hv_get_dns_info
 cp tools/hv_get_dhcp_info hv_get_dhcp_info
 cp tools/hv_set_ifconfig hv_set_ifconfig
 cp tools/lsvmbus lsvmbus
-cp tools/bondvf.sh bondvf.sh
-cp tools/unbondvf.sh unbondvf.sh
 cp tools/systemd/hv_fcopy_daemon.service hv_fcopy_daemon.service
 cp tools/systemd/hv_kvp_daemon.service hv_kvp_daemon.service
 cp tools/systemd/hv_vss_daemon.service hv_vss_daemon.service
@@ -73,7 +71,7 @@ cp tools/hv_fcopy_daemon.c %_sourcedir/
 set -- *
 mkdir source
 mv "$@" source/
-sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"autogen"/g' source/include/linux/hv_compat.h
+sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"master"/g' source/include/linux/hv_compat.h
 sed -i 's/hv_context.guestid = generate_guest_id(0x20, LINUX_VERSION_CODE, 0);/hv_context.guestid = generate_guest_id(0x22, LINUX_VERSION_CODE, 0);/g' source/hv.c
 
 mkdir obj
@@ -104,9 +102,6 @@ install    -m0644 source/hyperv.conf $RPM_BUILD_ROOT/etc/depmod.d/hyperv.conf
 install -d -m0755 $RPM_BUILD_ROOT/opt/files
 install -d -m0755 $RPM_BUILD_ROOT/sbin
 install -m0755 source/lsvmbus $RPM_BUILD_ROOT/sbin/
-install -d -m0755 $RPM_BUILD_ROOT/usr/sbin
-install -m0755 source/bondvf.sh $RPM_BUILD_ROOT/usr/sbin/
-install -m0755 source/unbondvf.sh $RPM_BUILD_ROOT/usr/sbin/
 install -d -m0755 $RPM_BUILD_ROOT/usr/sbin
 install -d -m0755 $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
 install -m0755 source/hv_get_dns_info $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
@@ -168,10 +163,6 @@ if [ $1 -eq 2 ]; then
  fi
 fi
 %post
-
-# Run unbonding script.
-echo "Running unbonding script."
-/usr/sbin/unbondvf.sh  > /dev/null 2>&1
 
 # Update initrd
 dracut --force "initramfs-$(uname -r).img" $(uname -r)
@@ -263,8 +254,6 @@ fi
 /usr/libexec/hypervkvpd/hv_get_dhcp_info
 /usr/libexec/hypervkvpd/hv_set_ifconfig
 /sbin/lsvmbus
-/usr/sbin/bondvf.sh
-/usr/sbin/unbondvf.sh
 /opt/files/
 %changelog
 * Mon Jan 7 2015 - vyadav@microsoft.com
