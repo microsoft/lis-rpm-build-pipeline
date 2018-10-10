@@ -147,6 +147,7 @@ rm -rf LISISO/CentOS73/update11/*.rpm
 rm -rf LISISO/CentOS73/update12/*.rpm
 rm -rf LISISO/CentOS73/update13/*.rpm
 rm -rf LISISO/CentOS73/update14/*.rpm
+rm -rf LISISO/CentOS73/update15/*.rpm
 rm -rf LISISO/CentOS74/*.rpm
 rm -rf LISISO/CentOS74/update1/*.rpm
 rm -rf LISISO/CentOS74/update2/*.rpm
@@ -164,6 +165,7 @@ rm -rf LISISO/CentOS75/update3/*.rpm
 rm -rf LISISO/CentOS75/update4/*.rpm
 rm -rf LISISO/CentOS75/update5/*.rpm
 rm -rf LISISO/CentOS75/update6/*.rpm
+rm -rf LISISO/CentOS75/update7/*.rpm
 
 #cleanup oracle  7.0
 rm -rf LISISO/Oracle70/*.rpm
