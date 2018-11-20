@@ -148,6 +148,7 @@ rm -rf LISISO/CentOS73/update12/*.rpm
 rm -rf LISISO/CentOS73/update13/*.rpm
 rm -rf LISISO/CentOS73/update14/*.rpm
 rm -rf LISISO/CentOS73/update15/*.rpm
+rm -rf LISISO/CentOS73/update16/*.rpm
 rm -rf LISISO/CentOS74/*.rpm
 rm -rf LISISO/CentOS74/update1/*.rpm
 rm -rf LISISO/CentOS74/update2/*.rpm
@@ -158,6 +159,7 @@ rm -rf LISISO/CentOS74/update6/*.rpm
 rm -rf LISISO/CentOS74/update7/*.rpm
 rm -rf LISISO/CentOS74/update8/*.rpm
 rm -rf LISISO/CentOS74/update9/*.rpm
+rm -rf LISISO/CentOS74/update10/*.rpm
 rm -rf LISISO/CentOS75/*.rpm
 rm -rf LISISO/CentOS75/update1/*.rpm
 rm -rf LISISO/CentOS75/update2/*.rpm

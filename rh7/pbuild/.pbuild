@@ -99,6 +99,7 @@ host:   centos73x64_UPDATE13    192.168.222.80       ~/rpmbuild/SOURCES       om
 host:   centos73x64_UPDATE14    192.168.222.88       ~/rpmbuild/SOURCES       om
 host:   centos73x64_UPDATE15    192.168.222.90       ~/rpmbuild/SOURCES       om
 host:   centos73x64_UPDATE16    192.168.222.94       ~/rpmbuild/SOURCES       om
+host:   centos73x64_UPDATE17    192.168.222.70       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE1     192.168.222.60       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE2     192.168.222.61       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE3     192.168.222.0       ~/rpmbuild/SOURCES       om
@@ -108,6 +109,7 @@ host:   centos74x64_UPDATE6     192.168.222.74       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE7     192.168.222.75       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE8     192.168.222.78       ~/rpmbuild/SOURCES       om
 host:   centos74x64_UPDATE9     192.168.222.82       ~/rpmbuild/SOURCES       om
+host:   centos74x64_UPDATE10    192.168.222.87       ~/rpmbuild/SOURCES       om
 host:   centos75x64		192.168.222.30       ~/rpmbuild/SOURCES       om
 host:   centos75x64_UPDATE1	192.168.222.79       ~/rpmbuild/SOURCES       om
 host:   centos75x64_UPDATE2	192.168.222.81       ~/rpmbuild/SOURCES       om

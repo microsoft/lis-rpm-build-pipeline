@@ -18,6 +18,7 @@ regex6='3.10.0-693.21.1'
 regex7='3.10.0-693.25.2'
 regex8='3.10.0-693.25.4'
 regex9='3.10.0-693.25.7'
+regex10='3.10.0-693.43.1'
 
 if [[ "$kernelver" =~ $regex1 ]]; then
    {
@@ -214,6 +215,27 @@ elif [[ "$kernelver" =~ $regex9 ]] ; then
         fi
    }
 
+elif [[ "$kernelver" =~ $regex10 ]] ; then
+    {
+        cd update10
+        kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
+        msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
+        if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ]; then
+           echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
+           rpm -Uvh $kmodrpm $msrpm
+           kmodexit=$?
+           if [ "$kmodexit" != 0 ]; then
+                     echo "Microsoft-Hyper-V RPM installation failed, Exiting."
+                     exit 1;
+           else
+                     echo " Linux Integration Services for Hyper-V has been installed. Please reboot your system."
+                     exit 0
+           fi
+        else
+              echo "Kmod RPM installation failed, Exiting."
+              exit 1
+        fi
+   }
 
 elif [ "$kernelver" == "3.10.0-693.el7.x86_64" ] ;then
    {
