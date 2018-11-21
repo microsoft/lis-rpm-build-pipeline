@@ -101,7 +101,7 @@ host:   centos67x32     	192.168.222.24       ~/rpmbuild/SOURCES       om
 host:   centos68x64     	192.168.222.32       ~/rpmbuild/SOURCES       om
 host:   centos68x32     	192.168.222.25       ~/rpmbuild/SOURCES       om
 host:   centos69x64     	192.168.222.13       ~/rpmbuild/SOURCES       om
-host:   centos69x32     	192.168.222.37       ~/rpmbuild/SOURCES       om
+host:   centos69x32     	192.168.222.98       ~/rpmbuild/SOURCES       om
 host:   centos610x64     	192.168.222.86       ~/rpmbuild/SOURCES       om
 host:   centos610x32     	192.168.222.87       ~/rpmbuild/SOURCES       om
 

@@ -78,7 +78,7 @@ select: om
 
 # Lis 4.0 branch build rpm
 
-host:   centos70x64     	192.168.222.14      ~/rpmbuild/SOURCES       om
+host:   centos70x64     	192.168.222.97      ~/rpmbuild/SOURCES       om
 host:   centos71x64		192.168.222.6       ~/rpmbuild/SOURCES       om
 host:   centos72x64     	192.168.222.8       ~/rpmbuild/SOURCES       om
 host:   centos73x64     	192.168.222.5       ~/rpmbuild/SOURCES       om
