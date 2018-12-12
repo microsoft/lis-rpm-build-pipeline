@@ -11,6 +11,7 @@
 #   - Invoke the version specific install.sh script.
 #
 # Kernel version
+#  7.6    3.10.0-957
 #  7.5    3.10.0-862
 #  7.4    3.10.0-693
 #  7.3    3.10.0-514
@@ -158,8 +159,10 @@ GetDistroVersion()
 		# If a 7.x kernel
 		#
 		elif [ "3.10.0" == ${kernelVersion} ]; then
-			if [ ${kernelChange} -ge 863 ]; then
+			if [ ${kernelChange} -ge 958 ]; then
                                 distro_version='unknown'
+			elif [ ${kernelChange} -ge 957 ]; then
+                                distro_version='76'
 			elif [ ${kernelChange} -ge 862 ]; then
                                 distro_version='75'
 			elif [ ${kernelChange} -ge 693 ]; then
