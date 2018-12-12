@@ -98,3 +98,7 @@ echo "copying root@${centos74x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/Cen
 scp -r root@${centos74x64update5}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS74/update5/
 scp -r root@${centos74x64update5}:/root/rpmbuild/SRPMS/* LISISO/CentOS74/update5/
 
+echo "copying root@${centos76x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS76/"
+#copying file from CentOS7.6
+scp -r root@${centos76x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS76/
+scp -r root@${centos76x64}:/root/rpmbuild/SRPMS/* LISISO/CentOS76/
