@@ -264,6 +264,24 @@ RemoveHypervDaemons()
 
 }
 
+RemoveHypervTools()
+{
+	echo "Removing Hyper-V Tools"
+
+	#
+	# Try remove hyperv-Tools
+	#
+	rpm -q hyperv-tools &> /dev/null
+	if [ $? -eq 0 ]; then
+		echo "Removing the hyperv-tools package"
+		rpm -e hyperv-tools &> /dev/null
+		if [ $? -ne 0 ]; then
+			echo "Unable to remove the hyperv-tools package"
+			echo "Remove the hyperv-tools with the command 'rpm -e hyperv-tools' and try the install again"
+			exit 1
+		fi
+	fi
+}
 
 #
 # Main script body
@@ -311,6 +329,11 @@ cd ${targetDir}
 # If the daemons are left installed, the new rpms will fail to install
 #
 RemoveHypervDaemons
+
+#
+# Hyper-V tools conflicts with installation, removing the tool
+#
+RemoveHypervTools
 
 #
 # Invoke the release specific install script
