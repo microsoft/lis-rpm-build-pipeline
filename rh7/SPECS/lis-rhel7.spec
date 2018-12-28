@@ -79,7 +79,20 @@ mkdir obj
 for flavor in %flavors_to_build; do
         rm -rf obj/$flavor
         cp -r source obj/$flavor
-        make -C %{kernel_source $flavor} M=$PWD/obj/$flavor modules
+        make -C %{kernel_source $flavor} M=$PWD/obj/$flavor modules -j$(nproc)
+	rhel_major=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $1 }')
+	rhel_minor=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $2 }')
+	rhel_release_code=$((rhel_major << 8 | rhel_minor))
+	if [ $rhel_release_code -eq 1795 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
+		pushd $PWD/obj/$flavor
+	        echo "Build MLX OFED 4.5 ..."
+		tar zxf mlnx-ofa_kernel-4.5.tgz
+		pushd mlnx-ofa_kernel-4.5
+		./configure --with-mlx4_en-mod --with-mlx5-core-and-en-mod -j$(nproc)
+		make -j$(nproc)
+		popd
+		popd
+	fi
 done
 
 pushd source/tools
@@ -91,6 +104,15 @@ export INSTALL_MOD_PATH=$RPM_BUILD_ROOT
 export INSTALL_MOD_DIR=extra/%{name}
 for flavor in %flavors_to_build; do
         make -C %{kernel_source $flavor} M=$PWD/obj/$flavor modules_install
+	rhel_major=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $1 }')
+	rhel_minor=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $2 }')
+	rhel_release_code=$((rhel_major << 8 | rhel_minor))
+	if [ $rhel_release_code -eq 1795 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
+		pushd $PWD/obj/$flavor/mlnx-ofa_kernel-4.5
+		echo "Install MLX OFED 4.5 ..."
+		find . -name *.ko -exec cp {} $INSTALL_MOD_PATH/lib/modules/$(uname -r)/$INSTALL_MOD_DIR \;
+		popd
+	fi
 done
 install -d -m0755 $RPM_BUILD_ROOT/etc/udev/rules.d/
 install    -m0644 source/100-balloon.rules $RPM_BUILD_ROOT/etc/udev/rules.d/
