@@ -11,11 +11,11 @@ Runbuild()
 	rhel_major=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $1 }')
 	rhel_minor=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $2 }')
 	rhel_release_code=$((rhel_major << 8 | rhel_minor))
-	if [ $rhel_release_code -eq 1795 ]; then
+	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1798 ]; then
 		rm -vrf /root/rpmbuild/SOURCES/lis-next-rh7.tar.gz
-		mv /root/rpmbuild/SOURCES/lis-next-rh73.tar.gz /root/rpmbuild/SOURCES/lis-next-rh7.tar.gz
+		mv /root/rpmbuild/SOURCES/lis-next-rh7-mlx.tar.gz /root/rpmbuild/SOURCES/lis-next-rh7.tar.gz
 	else
-		rm -vrf /root/rpmbuild/SOURCES/lis-next-rh73.tar.gz
+		rm -vrf /root/rpmbuild/SOURCES/lis-next-rh7-mlx.tar.gz
 	fi
        rpmbuild --clean /root/rpmbuild/SPECS/lis-rhel7.spec
 #	rpmbuild --clean /root/rpmbuild/SPECS/lis-centos7.spec
