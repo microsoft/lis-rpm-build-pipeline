@@ -241,7 +241,7 @@ RemoveHypervTools()
 function installbuildrpm()
 {
 	i=$1
-	cd "update${i}" > /dev/null 2>&1
+	cd "update${i}" &> /dev/null
 	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
 	msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
@@ -262,7 +262,7 @@ function installbuildrpm()
 function upgradebuildrpm()
 {
 	i=$1
-	cd "update${i}" > /dev/null 2>&1
+	cd "update${i}" &> /dev/null
 	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
 	msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
