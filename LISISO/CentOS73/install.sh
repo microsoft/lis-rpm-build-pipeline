@@ -64,8 +64,7 @@ elif [[ "$kernelver" =~ $regex16 ]] ; then
 	installbuildrpm 16
 elif [[ "$kernelver" =~ $regex17 ]] ; then
 	installbuildrpm 17
-elif [ "$kernelver" == "3.10.0-514.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.2.2.el7.x86_64" ] 
-	|| [ "$kernelver" == "3.10.0-514.6.1.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.2.el7.x86_64" ] ;then
+elif [ "$kernelver" == "3.10.0-514.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.2.2.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.1.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.2.el7.x86_64" ] ;then
 	checkrpms
 	installbuildrpm 
 else
