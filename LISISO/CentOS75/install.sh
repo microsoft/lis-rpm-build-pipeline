@@ -14,6 +14,7 @@ regex6='3.10.0-862.11.6'
 regex7='3.10.0-862.14.4'
 regex8='3.10.0-862.25.3'
 regex9='3.10.0-862.27.1'
+regex10='3.10.0-862.20.2'
 
 source ../commonfunctions.sh
 
@@ -35,6 +36,8 @@ elif [[ "$kernelver" =~ $regex8 ]]; then
 	installbuildrpm 8
 elif [[ "$kernelver" =~ $regex9 ]]; then
         installbuildrpm 9
+elif [[ "$kernelver" =~ $regex10 ]]; then
+        installbuildrpm 10
 elif [ "$kernelver" == "3.10.0-862.el7.x86_64" ] ;then
 	checkrpms
 	installbuildrpm   
