@@ -11,7 +11,7 @@ source ../commonfunctions.sh
 
 if [[ "$kernelver" =~ $regex1 ]]; then	        
 	upgradebuildrpm 1
-if [[ "$kernelver" =~ $regex2]]; then
+elif [[ "$kernelver" =~ $regex2]]; then
         upgradebuildrpm 2
 elif [ "$kernelver" == "3.10.0-957.el7.x86_64" ] ;then
 	checkrpms
