@@ -525,6 +525,11 @@ echo "copying root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHE
 scp -r root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL76/update1
 scp -r root@${centos76x64update1}:/root/rpmbuild/SRPMS/* LISISO/RHEL76/update1
 
+echo "copying root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL76/update2"
+#copying file from RHEL7.6_update2
+scp -r root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/RHEL76/update2
+scp -r root@${centos76x64update2}:/root/rpmbuild/SRPMS/* LISISO/RHEL76/update2
+
 #copying file from CentOS7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS70/"
 scp -r root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS70/
@@ -750,6 +755,10 @@ echo "copying root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/Cen
 scp -r root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS76/update1/
 scp -r root@${centos76x64update1}:/root/rpmbuild/SRPMS/* LISISO/CentOS76/update1/
 
+echo "copying root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS76/update2"
+#copying file from CentOS7.6_update2
+scp -r root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/CentOS76/update2/
+scp -r root@${centos76x64update2}:/root/rpmbuild/SRPMS/* LISISO/CentOS76/update2/
 
 #copying file from Oracle7.0
 echo "copying root@${centos70x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle70/"
@@ -975,6 +984,11 @@ echo "copying root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/Ora
 #copying file from Oracle7.6
 scp -r root@${centos76x64update1}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle76/update1
 scp -r root@${centos76x64update1}:/root/rpmbuild/SRPMS/* LISISO/Oracle76/update1
+
+echo "copying root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle76/update2"
+#copying file from Oracle7.6_update2
+scp -r root@${centos76x64update2}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle76/update2
+scp -r root@${centos76x64update2}:/root/rpmbuild/SRPMS/* LISISO/Oracle76/update2
 
 #copying file from Oracle6.4
 scp -r root@${centos64x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/Oracle64/
