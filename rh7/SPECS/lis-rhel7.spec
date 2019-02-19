@@ -112,6 +112,8 @@ for flavor in %flavors_to_build; do
 		echo "Install MLX OFED 4.5 ..."
 		find . -name *.ko -exec cp {} $INSTALL_MOD_PATH/lib/modules/$(uname -r)/$INSTALL_MOD_DIR \;
 		popd
+		install -d -m0755 $RPM_BUILD_ROOT/etc/modprobe.d/
+		install    -m0644 $PWD/obj/$flavor/hyperv_mod_blacklist.conf $RPM_BUILD_ROOT/etc/modprobe.d/
 	fi
 done
 install -d -m0755 $RPM_BUILD_ROOT/etc/udev/rules.d/

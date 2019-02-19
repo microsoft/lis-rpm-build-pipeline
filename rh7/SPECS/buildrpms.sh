@@ -14,6 +14,7 @@ Runbuild()
 	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1798 ]; then
 		rm -vrf /root/rpmbuild/SOURCES/lis-next-rh7.tar.gz
 		mv /root/rpmbuild/SOURCES/lis-next-rh7-mlx.tar.gz /root/rpmbuild/SOURCES/lis-next-rh7.tar.gz
+		echo -e "%config /etc/modprobe.d/hyperv_mod_blacklist.conf" >> config
 	else
 		rm -vrf /root/rpmbuild/SOURCES/lis-next-rh7-mlx.tar.gz
 	fi
