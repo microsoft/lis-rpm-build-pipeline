@@ -247,7 +247,7 @@ function installbuildrpm()
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
 	then
 		echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
-		rpm -ivh $kmodrpm $msrpm
+		rpm -ivh $kmodrpm $msrpm 2>&1 | grep -v "mlx5_ib"
 		kmodexit=$?
 		if [ "$kmodexit" != 0 ]; then
 			echo "Microsoft-Hyper-V RPM installation failed, Exiting."
@@ -267,7 +267,7 @@ function upgradebuildrpm()
 	msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
 	then
-		rpm -Uvh $kmodrpm $msrpm
+		rpm -Uvh $kmodrpm $msrpm 2>&1 | grep -v "mlx5_ib"
 	        msexit=$?
         	if [ "$msexit" != 0 ]; then
 	    		echo "Microsoft-Hyper-V rpm Upgradation failed, Exiting"
