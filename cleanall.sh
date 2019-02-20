@@ -112,6 +112,7 @@ rm -rf LISISO/RHEL73/update14/*.rpm
 rm -rf LISISO/RHEL73/update15/*.rpm
 rm -rf LISISO/RHEL73/update16/*.rpm
 rm -rf LISISO/RHEL73/update17/*.rpm
+rm -rf LISISO/RHEL73/update18/*.rpm
 rm -rf LISISO/RHEL74/*.rpm
 rm -rf LISISO/RHEL74/update1/*.rpm
 rm -rf LISISO/RHEL74/update2/*.rpm
@@ -123,6 +124,7 @@ rm -rf LISISO/RHEL74/update7/*.rpm
 rm -rf LISISO/RHEL74/update8/*.rpm
 rm -rf LISISO/RHEL74/update9/*.rpm
 rm -rf LISISO/RHEL74/update10/*.rpm
+rm -rf LISISO/RHEL74/update11/*.rpm
 rm -rf LISISO/RHEL75/*.rpm
 rm -rf LISISO/RHEL75/update1/*.rpm
 rm -rf LISISO/RHEL75/update2/*.rpm
@@ -161,6 +163,7 @@ rm -rf LISISO/CentOS73/update14/*.rpm
 rm -rf LISISO/CentOS73/update15/*.rpm
 rm -rf LISISO/CentOS73/update16/*.rpm
 rm -rf LISISO/CentOS73/update17/*.rpm
+rm -rf LISISO/CentOS73/update18/*.rpm
 rm -rf LISISO/CentOS74/*.rpm
 rm -rf LISISO/CentOS74/update1/*.rpm
 rm -rf LISISO/CentOS74/update2/*.rpm
@@ -172,6 +175,7 @@ rm -rf LISISO/CentOS74/update7/*.rpm
 rm -rf LISISO/CentOS74/update8/*.rpm
 rm -rf LISISO/CentOS74/update9/*.rpm
 rm -rf LISISO/CentOS74/update10/*.rpm
+rm -rf LISISO/CentOS74/update11/*.rpm
 rm -rf LISISO/CentOS75/*.rpm
 rm -rf LISISO/CentOS75/update1/*.rpm
 rm -rf LISISO/CentOS75/update2/*.rpm
@@ -210,6 +214,7 @@ rm -rf LISISO/Oracle73/update14/*.rpm
 rm -rf LISISO/Oracle73/update15/*.rpm
 rm -rf LISISO/Oracle73/update16/*.rpm
 rm -rf LISISO/Oracle73/update17/*.rpm
+rm -rf LISISO/Oracle73/update18/*.rpm
 rm -rf LISISO/Oracle74/*.rpm
 rm -rf LISISO/Oracle74/update1/*.rpm
 rm -rf LISISO/Oracle74/update2/*.rpm
@@ -221,6 +226,7 @@ rm -rf LISISO/Oracle74/update7/*.rpm
 rm -rf LISISO/Oracle74/update8/*.rpm
 rm -rf LISISO/Oracle74/update9/*.rpm
 rm -rf LISISO/Oracle74/update10/*.rpm
+rm -rf LISISO/Oracle74/update11/*.rpm
 rm -rf LISISO/Oracle75/*.rpm
 rm -rf LISISO/Oracle75/update1/*.rpm
 rm -rf LISISO/Oracle75/update2/*.rpm
