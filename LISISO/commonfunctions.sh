@@ -4,30 +4,31 @@
 # Microsoft Hyper-V
 #
 ###############################################################################
+distro_package_name=RPMS
+
 GetDistroName()
 {
 	linuxString=$(grep -ihs "CentOS\|Red Hat Enterprise Linux" /etc/redhat-release)
-
-	case $linuxString in
-		*CentOS*)
-			distro_name=CentOS
-			;;
-		*Red*)
-			distro_name=RHEL
-			;;
-		*Oracle*)
-                        distro_name=Oracle
-                        ;;
-
-		*)
-			distro_name=unknown
-			return 1
-			;;
-	esac
-
+	OracleDistroName=$(grep -ihs "Oracle" /etc/oracle-release)
+	if [[ $OracleDistroName == *Oracle* ]]; then
+        	distro_name="Oracle"
+    	else
+        	case $linuxString in
+                	*CentOS*)
+                    		distro_name=CentOS
+                	;;
+                	*Red*)
+                    		distro_name=RHEL
+                	;;
+                	*)
+                		distro_name=unknown
+                		return 1
+                	;;
+        	esac
+    	fi
 	return 0
-}
 
+}
 
 #
 # The grouping of the regular expression using () will
@@ -139,6 +140,15 @@ GetDistroVersion()
 			return 1
 		fi
 	fi
+}
+
+CheckSupportOracleDistro()
+{
+	OracleDistroVersion=[52,53,54,55,56,57,58,59,510,511,60,61,62,63]
+	if [[ ${OracleDistroVersion[*]} =~ $distro_version ]] ; then
+	        return 1
+	fi
+	return 0
 }
 
 RemoveHypervDaemons()
