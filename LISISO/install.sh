@@ -70,6 +70,14 @@ if [ $distro_version = "unknown" ]; then
     exit 1
 fi
 
+if [ $distro_name = "Oracle" ]; then
+	CheckSupportOracleDistro 
+	if [ $? -ne 0 ]; then
+		echo "Installation is not supported for Oracle distro from series 52 to 63"
+		exit 1
+	fi
+fi
+
 if [[ $distro_version != "5"* ]]; then
  latestkernel=(`rpm -q kernel | tail -n1 | cut -c 8-`)
  runningkernel=(`uname -r`)
@@ -79,7 +87,7 @@ if [[ $distro_version != "5"* ]]; then
  fi
 fi
 
-targetDir="${distro_name}${distro_version}"
+targetDir="${distro_package_name}${distro_version}"
 
 if [ ! -e "./${targetDir}" ]; then
 	echo "The distribution specific directory '${targetDir}' does not exist"

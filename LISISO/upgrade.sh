@@ -67,7 +67,15 @@ if [ $distro_version = "unknown" ]; then
     exit 1
 fi
 
-targetDir="${distro_name}${distro_version}"
+if [ $distro_name = "Oracle" ]; then
+	CheckSupportOracleDistro 
+	if [ $? -ne 0 ]; then
+		echo "Upgrade is not supported for Oracle distro from series 52 to 63"
+		exit 1
+	fi
+fi
+
+targetDir="${distro_package_name}${distro_version}"
 
 if [ ! -e "./${targetDir}" ]; then
 	echo "The distribution specific directory '${targetDir}' does not exist"
