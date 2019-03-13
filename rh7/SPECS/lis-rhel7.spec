@@ -83,7 +83,7 @@ for flavor in %flavors_to_build; do
 	rhel_major=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $1 }')
 	rhel_minor=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $2 }')
 	rhel_release_code=$((rhel_major << 8 | rhel_minor))
-	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1798 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
+	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1797 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
 		pushd $PWD/obj/$flavor
 	        echo "Build MLX OFED 4.5 ..."
 		tar zxf mlnx-ofa_kernel-4.5.tgz
@@ -107,7 +107,7 @@ for flavor in %flavors_to_build; do
 	rhel_major=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $1 }')
 	rhel_minor=$(grep -Eoh [0-9]+\.[0-9]+ /etc/{issue,*release} | head -1 | awk -F'.' '{ print $2 }')
 	rhel_release_code=$((rhel_major << 8 | rhel_minor))
-	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1798 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
+	if [ $rhel_release_code -ge 1795 ] && [ $rhel_release_code -lt 1797 ] && [ -f "$PWD/obj/$flavor/mlnx-ofa_kernel-4.5.tgz" ]; then
 		pushd $PWD/obj/$flavor/mlnx-ofa_kernel-4.5
 		echo "Install MLX OFED 4.5 ..."
 		find . -name *.ko -exec cp {} $INSTALL_MOD_PATH/lib/modules/$(uname -r)/$INSTALL_MOD_DIR \;
