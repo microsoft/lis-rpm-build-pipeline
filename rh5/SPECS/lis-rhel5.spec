@@ -193,7 +193,7 @@ else # package is being erased, not upgraded
   mkinitrd -f "initrd-$(uname -r).img" "$(uname -r)"
   cp -f "initrd-$(uname -r).img" /boot/"initrd-$(uname -r).img"
   rm -rf /opt/files/"initramfs-$(uname -r).img"
-  echo "Linux Integration Services for Hyper-V has been removed.Please remove hda=noprobe hdb=noprobe from grub file and reboot your system."
+  echo "Linux Integration Services for Hyper-V has been removed.Please remove hda=noprobe hdb=noprobe from grub file."
 fi
 
 %posttrans 

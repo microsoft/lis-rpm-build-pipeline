@@ -12,7 +12,7 @@ if [ ${#lisarr[@]} -gt 0 ]; then
  	rpm -e ${lisarr[@]}		
 	exit=$?
         if [ $exit -eq 0 ]; then
-	      echo "Uninstalled Linux Integration Services for Microsoft Hyper-V..."
+	      echo "Uninstalled Linux Integration Services for Microsoft Hyper-V. Please reboot your system."
 	else
               echo "Uninstallation of Linux Integration Services for Microsoft Hyper-V failed , Exiting"
               exit 1
