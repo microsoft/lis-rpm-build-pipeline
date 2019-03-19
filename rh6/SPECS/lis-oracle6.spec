@@ -211,7 +211,7 @@ else # package is being erased, not upgraded
     rm -rf /opt/files/"initramfs-$(uname -r).img"
     cp /opt/files/hyperv.conf /etc/depmod.d/
     rm -rf  /opt/files/hyperv.conf
-    echo "Linux Integration Services for Hyper-V has been removed.  Please reboot your system."
+    echo "Linux Integration Services for Hyper-V has been removed."
 fi
 
 %posttrans
