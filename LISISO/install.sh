@@ -112,6 +112,9 @@ RemoveHypervDaemons
 #
 RemoveHypervTools
 
+# To Check sufficient disk space is available for installation
+CheckDiskSize
+
 #
 # Invoke the release specific install script
 #

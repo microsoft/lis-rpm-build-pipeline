@@ -315,3 +315,72 @@ function checkrpms()
 		echo "RPM's are missing"
 	fi
 }
+
+function CheckDiskSize
+{
+	#Clean Installation Temp Disk Usage
+	temp_disk_usage_same_partition_clean_install=150
+	temp_disk_usage_diff_partition_modules_clean_install=150
+	temp_disk_usage_diff_partition_boot_clean_install=20
+
+	#Reinstall Installation Temp Disk Usage
+	temp_disk_usage_same_partition_reinstall=210
+	temp_disk_usage_diff_partition_modules_reinstall=170
+	temp_disk_usage_diff_partition_boot_reinstall=18
+
+	#Calculations
+	rpm_install_size=`rpm -qpi *hyper-v*x86_64.rpm | grep "Size" | awk '{ total += $3; print }; END { print total /1024/1024}' | tail -1`
+	echo "rpm_install_size $rpm_install_size"
+	existing_initramfs_size=`ls -l --block-size=M /boot/"initramfs-$(uname -r).img" | awk '{print $5}' | tr -d "M"`
+
+	if [ ! -e /boot/"initramfs-$(uname -r).img-old" ]
+	then
+			min_initramfs=$( expr 1 '*' "$existing_initramfs_size" )
+	else
+			min_initramfs=0
+	fi
+
+	hyperv_packages=$(rpm -qa | grep "hyper-v" | wc -l)
+	if [ $hyperv_packages -le 0 ]; then
+			#Same Partition Calculation
+			same_partition_minimum_req_disk=$(bc <<< $rpm_install_size+$min_initramfs+$temp_disk_usage_same_partition_clean_install)
+			#Different Partition Calculation
+			diff_partition_minimum_req_disk_boot=$(expr $min_initramfs + $temp_disk_usage_diff_partition_boot_clean_install)
+			diff_partition_minimum_req_disk_module=$(bc <<< $rpm_install_size+$temp_disk_usage_diff_partition_modules_clean_install)
+	else
+			echo "This is re-install/upgrade"
+			#Same Partition Calculation
+			same_partition_minimum_req_disk=$(bc <<< $rpm_install_size+$min_initramfs+$temp_disk_usage_same_partition_reinstall)
+			#Different Partition Calculation
+			diff_partition_minimum_req_disk_boot=$(expr $min_initramfs + $temp_disk_usage_diff_partition_boot_reinstall)
+			diff_partition_minimum_req_disk_module=$(bc <<< $rpm_install_size+$temp_disk_usage_diff_partition_modules_reinstall)
+	fi
+
+	disk_space_errors=0
+	boot_partition_name=$(df -hm  /boot | awk '{print $1}' | tail -1)
+	modules_partition_name=$(df -hm /lib/modules | awk '{print $1}' | tail -1)
+	if [[ $boot_partition_name == $modules_partition_name ]]; then
+			echo  "boot and modules share the same partition."
+			current_boot_partition_size=`df -hm $boot_partition_name | awk '{print $4}' | tail -1`
+			if [[ ( $current_boot_partition_size -lt $same_partition_minimum_req_disk ) ]]; then
+					echo "Not sufficient space to start LIS Installation."
+					echo "Partition containing $boot_partition_name : Minimum Required Space $same_partition_minimum_req_disk MB Current Space $current_boot_partition_size MB"
+					disk_space_errors=$(expr $disk_space_errors + 1)
+			fi
+	else
+			echo  "boot and modules do not share the same partition."
+			current_boot_partition_space=`df -hm | grep "/boot" | awk '{print $4}'`
+			current_modules_partition_space=`df -hm /lib/modules | awk '{print $4}' | tail -1`
+			if [ ${current_boot_partition_space%.*} -lt ${diff_partition_minimum_req_disk_boot%.*} ]; then
+					echo "Partition containing $boot_partition_name : Minimum Required Space $diff_partition_minimum_req_disk_boot MB Current Space $current_boot_partition_space MB"
+			fi
+			if [ ${current_modules_partition_space%.*}  -lt ${diff_partition_minimum_req_disk_module%.*} ]; then
+					echo "Partition containing $modules_partition_name : Minimum Required Space $diff_partition_minimum_req_disk_module MB Current Space $current_modules_partition_space MB"
+					disk_space_errors=$(expr $disk_space_errors + 1)
+			fi
+	fi
+
+if [ $disk_space_errors -gt 0 ]; then
+        exit 1
+fi
+}
