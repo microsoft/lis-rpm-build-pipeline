@@ -257,6 +257,11 @@ echo "copying root@${centos73x64update18}:/root/rpmbuild/RPMS/x86_64/* LISISO/RP
 scp -r root@${centos73x64update18}:/root/rpmbuild/RPMS/x86_64/* LISISO/RPMS73/update18/
 scp -r root@${centos73x64update18}:/root/rpmbuild/SRPMS/* LISISO/RPMS73/update18/
 
+echo "copying root@${centos73x64update19}:/root/rpmbuild/RPMS/x86_64/* LISISO/RPMS73/update19/"
+#copying file from RHEL7.3_update19
+scp -r root@${centos73x64update19}:/root/rpmbuild/RPMS/x86_64/* LISISO/RPMS73/update19/
+scp -r root@${centos73x64update19}:/root/rpmbuild/SRPMS/* LISISO/RPMS73/update19/
+
 echo "copying root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RPMS74/"
 #copying file from RPMS7.4
 scp -r root@${centos74x64}:/root/rpmbuild/RPMS/x86_64/* LISISO/RPMS74/
