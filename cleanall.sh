@@ -83,6 +83,7 @@ rm -rf LISISO/RPMS73/update15/*.rpm
 rm -rf LISISO/RPMS73/update16/*.rpm
 rm -rf LISISO/RPMS73/update17/*.rpm
 rm -rf LISISO/RPMS73/update18/*.rpm
+rm -rf LISISO/RPMS73/update19/*.rpm
 rm -rf LISISO/RPMS74/*.rpm
 rm -rf LISISO/RPMS74/update1/*.rpm
 rm -rf LISISO/RPMS74/update2/*.rpm

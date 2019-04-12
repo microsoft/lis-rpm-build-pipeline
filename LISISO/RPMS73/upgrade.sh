@@ -28,6 +28,7 @@ regex15='3.10.0-514.55.4'
 regex16='3.10.0-514.58.1'
 regex17='3.10.0-514.61.1'
 regex18='3.10.0-514.62.1'
+regex19='3.10.0-514.63.1'
 
 source ../commonfunctions.sh
 
@@ -67,6 +68,8 @@ elif [[ "$kernelver" =~ $regex17 ]] ; then
 	upgradebuildrpm 17
 elif [[ "$kernelver" =~ $regex18 ]] ; then
         upgradebuildrpm 18
+elif [[ "$kernelver" =~ $regex19 ]] ; then
+        upgradebuildrpm 19
 elif [ "$kernelver" == "3.10.0-514.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.2.2.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.1.el7.x86_64" ] || [ "$kernelver" == "3.10.0-514.6.2.el7.x86_64" ] ;then
 	checkrpms
 	upgradebuildrpm 
