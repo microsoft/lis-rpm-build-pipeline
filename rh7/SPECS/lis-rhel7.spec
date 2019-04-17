@@ -115,6 +115,9 @@ for flavor in %flavors_to_build; do
 		install -d -m0755 $RPM_BUILD_ROOT/etc/modprobe.d/
 		install    -m0644 $PWD/obj/$flavor/hyperv_mod_blacklist.conf $RPM_BUILD_ROOT/etc/modprobe.d/
 	fi
+	export KMOD_INSTALL_DIR="$INSTALL_MOD_PATH/lib/modules/%{latest_kernel}/$INSTALL_MOD_DIR"
+	export WEAK_UPDATE_DIR="weak-updates/%{name}"
+	find $KMOD_INSTALL_DIR -name "*.ko" -exec bash -c 'kmodn=`basename {} | cut -d'.' -f1`; printf "override %s * $WEAK_UPDATE_DIR\n" $kmodn' \; > source/hyperv.conf
 done
 install -d -m0755 $RPM_BUILD_ROOT/etc/udev/rules.d/
 install    -m0644 source/100-balloon.rules $RPM_BUILD_ROOT/etc/udev/rules.d/
