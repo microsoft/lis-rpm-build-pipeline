@@ -151,6 +151,22 @@ CheckSupportOracleDistro()
 	return 0
 }
 
+IsInstalledKernelOlderThanErrataKernel()
+{
+	InstalledKernVersion=`uname -r`
+	ErrataKernVersion="$1"
+
+	InstalledKernVersion=${InstalledKernVersion//\.el*.*/}
+	ErrataKernVersion=${ErrataKernVersion//\.el*.*/}
+
+	[[ $InstalledKernVersion == $ErrataKernVersion ]] && return 0
+
+	KernelVerion=$(printf '%s\n' $InstalledKernVersion $ErrataKernVersion | sort -V | head -n 1)
+	[[ $KernelVerion != $InstalledKernVersion ]] && return 0
+
+	return 1
+}
+
 RemoveHypervDaemons()
 {
 	echo "Removing Hyper-V daemons"
