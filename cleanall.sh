@@ -112,3 +112,4 @@ rm -rf LISISO/RPMS76/*.rpm
 rm -rf LISISO/RPMS76/update1/*.rpm
 rm -rf LISISO/RPMS76/update2/*.rpm
 rm -rf LISISO/RPMS76/update3/*.rpm
+rm -rf LISISO/RPMS76/update4/*.rpm
