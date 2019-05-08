@@ -96,6 +96,7 @@ rm -rf LISISO/RPMS74/update8/*.rpm
 rm -rf LISISO/RPMS74/update9/*.rpm
 rm -rf LISISO/RPMS74/update10/*.rpm
 rm -rf LISISO/RPMS74/update11/*.rpm
+rm -rf LISISO/RPMS74/update12/*.rpm
 rm -rf LISISO/RPMS75/*.rpm
 rm -rf LISISO/RPMS75/update1/*.rpm
 rm -rf LISISO/RPMS75/update2/*.rpm
