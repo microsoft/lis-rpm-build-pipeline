@@ -78,6 +78,12 @@ if [ $distro_name = "Oracle" ]; then
 	fi
 fi
 
+IsKernelSupported "RHEL$distro_version"
+if [ $? -eq 0 ];then
+	echo "Kernel version not supported, Exiting"
+	exit 1
+fi
+
 if [[ $distro_version != "5"* ]]; then
  latestkernel=(`rpm -q kernel | tail -n1 | cut -c 8-`)
  runningkernel=(`uname -r`)
