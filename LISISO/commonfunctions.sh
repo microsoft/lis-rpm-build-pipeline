@@ -167,6 +167,20 @@ IsInstalledKernelOlderThanErrataKernel()
 	return 1
 }
 
+IsKernelSupported()
+{
+	Distro=$1
+	InstalledKernVersion=$(uname -r)
+	SupportedVersion=`cat latestsupportedkernel | grep $Distro | cut -d: -f2`
+	[ x"$SupportedVersion" == x ] && return 1
+
+	SupportedVersion=${SupportedVersion//\.el*.*/}
+	InstalledKernVersion=${InstalledKernVersion//\.el*.*/}
+
+	[[ $InstalledKernVersion > $SupportedVersion ]] && return 0
+	return 1
+}
+
 RemoveHypervDaemons()
 {
 	echo "Removing Hyper-V daemons"
