@@ -13,8 +13,7 @@ GetDistroName()
 	if [[ $OracleDistroName == *Oracle* ]]; then
         	distro_name="Oracle"
     	else
-        	case $linuxString in
-                	*CentOS*)
+        	case $linuxString in*CentOS*)
                     		distro_name=CentOS
                 	;;
                 	*Red*)
@@ -332,4 +331,48 @@ function checkrpms()
 	else
 		echo "RPM's are missing"
 	fi
+}
+
+function CheckRequiredSpaceForInstallation()
+{
+        if (( $1 < $2 )); then
+                echo "LIS installation aborted due to insufficient space"
+                printf "\t %s \t\t %s\n" "$3" "available: $1 required: $2 bytes"
+                return 0
+        fi
+        return 1
+}
+
+function CheckRequiredSpace()
+{	
+	# 150MB(157286400 Bytes) minimum space is required
+    	MIN_SPACE_FOR_RAMFS_CREATION=157286400
+	
+	lib_module_folder="/lib/modules"
+    	boot_folder="/boot"
+	root_partition=$(df $lib_module_folder | grep -v Used | awk '{ print $1}')
+    	boot_partition=$(df $boot_folder | grep -v Used | awk '{ print $1}')
+
+	ramdisk_size_factor=1
+	[ $root_partition != $boot_partition ] && ramdisk_size_factor=2
+
+	root_part_avail_space=$(($(stat -f --format="%f*%S" $lib_module_folder)))
+	boot_part_avail_space=$(($(stat -f --format="%f*%S" $boot_folder)))
+
+	lib_module_required_space=$(rpm --queryformat='%{SIZE}' -qp kmod-microsoft-hyper*x86_64.rpm)
+    	ramdisk_required_space=$(stat /boot/initramfs-$(uname -r).img --format="%s")
+
+    	boot_part_required_space=$ramdisk_required_space
+	
+	root_part_required_space=$(expr $MIN_SPACE_FOR_RAMFS_CREATION + $ramdisk_size_factor \* $ramdisk_required_space + $lib_module_required_space)
+
+	CheckRequiredSpaceForInstallation $root_part_avail_space $root_part_required_space $lib_module_folder 
+	ret=$?
+	if [ $ret -eq 1 ]; then
+		if [ $root_partition != $boot_partition ]; then 
+			CheckRequiredSpaceForInstallation $boot_part_avail_space $boot_part_required_space $boot_folder
+			ret=$?
+		fi
+	fi
+	return $ret
 }
