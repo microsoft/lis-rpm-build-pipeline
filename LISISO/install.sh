@@ -85,7 +85,6 @@ if [ $? -eq 0 ];then
 fi
 
 if [[ $distro_version != "5"* ]]; then
- export no_initramfs=1
  latestkernel=(`rpm -q kernel | tail -n1 | cut -c 8-`)
  runningkernel=(`uname -r`)
  if [ ${latestkernel} != ${runningkernel} ] ; then
