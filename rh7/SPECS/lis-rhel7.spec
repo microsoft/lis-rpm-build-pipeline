@@ -117,7 +117,7 @@ for flavor in %flavors_to_build; do
 	fi
 	export KMOD_INSTALL_DIR="$INSTALL_MOD_PATH/lib/modules/%{latest_kernel}/$INSTALL_MOD_DIR"
 	export WEAK_UPDATE_DIR="weak-updates/%{name}"
-	find $KMOD_INSTALL_DIR -name "*.ko" -exec bash -c 'kmodn=`basename {} | cut -d'.' -f1`; printf "override %s * $WEAK_UPDATE_DIR\n" $kmodn' \; > source/hyperv.conf
+	find $KMOD_INSTALL_DIR -name "*.ko" -exec bash -c 'kmodn=`basename {} | cut -d'.' -f1`; printf "override %s %{kverrel} $WEAK_UPDATE_DIR\n" $kmodn' \; > source/hyperv.conf
 done
 install -d -m0755 $RPM_BUILD_ROOT/etc/udev/rules.d/
 install    -m0644 source/100-balloon.rules $RPM_BUILD_ROOT/etc/udev/rules.d/
@@ -189,6 +189,13 @@ if [ $1 -eq 2 ]; then
  fi
 fi
 %post
+sed -i "s/%kverrel/$(uname -r)/g" -i /etc/depmod.d/hyperv.conf
+# Update module dependency
+if [ -e "/boot/System.map-$(uname -r)" ]; then
+	/usr/sbin/depmod -aeF "/boot/System.map-$(uname -r)" "$(uname -r)" > /dev/null || :
+else
+	/usr/sbin/depmod -a
+fi
 
 # Update initrd
 dracut --force "initramfs-$(uname -r).img" $(uname -r)
@@ -202,14 +209,9 @@ cp -f "initramfs-$(uname -r).img" /boot/"initramfs-$(uname -r).img"
 # If this is an upgrade, put new initrd into /tmp so postrans can
 # copy it over to fix the fact that the postun from the previous package
 # version will overwrite the updated initrd.
-cp /etc/depmod.d/hyperv.conf /opt/files/
 
 if [ $1 -eq 2 ]; then
    cp -f "initramfs-$(uname -r).img" /opt/files/"initramfs-$(uname -r).img"
-fi
-
-if [ $1 -eq 1 ]; then
- rm -rf /etc/depmod.d/hyperv.conf
 fi
 
 echo "Starting KVP Daemon...."
@@ -246,8 +248,6 @@ else # package is being erased, not upgraded
     dracut --force "initramfs-$(uname -r).img" $(uname -r)
     cp -f "initramfs-$(uname -r).img" /boot/"initramfs-$(uname -r).img"
     rm -rf /opt/files/"initramfs-$(uname -r).img"
-    cp /opt/files/hyperv.conf /etc/depmod.d/
-    rm -rf  /opt/files/hyperv.conf
     echo "Linux Integration Services for Hyper-V has been removed."
 fi
 
@@ -255,7 +255,6 @@ fi
 if [ -e /opt/files/"initramfs-$(uname -r).img" ]; then #Recopying new initrd , as it got replaced because postun of old package
     cp -f /opt/files/"initramfs-$(uname -r).img" /boot/"initramfs-$(uname -r).img"
     echo "Upgrading RPMs Completed"
-    rm -rf /etc/depmod.d/hyperv.conf
 fi
 
 if [  -e /etc/modprobe.d/hyperv_pvdrivers.conf ] ; then
