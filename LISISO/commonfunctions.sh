@@ -13,7 +13,8 @@ GetDistroName()
 	if [[ $OracleDistroName == *Oracle* ]]; then
         	distro_name="Oracle"
     	else
-        	case $linuxString in*CentOS*)
+        	case $linuxString in
+			*CentOS*)
                     		distro_name=CentOS
                 	;;
                 	*Red*)
