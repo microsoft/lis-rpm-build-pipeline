@@ -177,7 +177,11 @@ IsKernelSupported()
 	SupportedVersion=${SupportedVersion//\.el*.*/}
 	InstalledKernVersion=${InstalledKernVersion//\.el*.*/}
 
-	[[ $InstalledKernVersion > $SupportedVersion ]] && return 0
+	[[ $InstalledKernVersion == $SupportedVersion ]] && return 1
+
+	KernelVerion=$(printf '%s\n' $SupportedVersion $InstalledKernVersion | sort -rV | head -n 1)
+	[[ $KernelVerion != $SupportedVersion ]] && return 0
+
 	return 1
 }
 
