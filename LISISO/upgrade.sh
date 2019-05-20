@@ -82,6 +82,10 @@ if [ ! -e "./${targetDir}" ]; then
 	exit 1
 fi
 
+if [[ $distro_version != "5"* ]]; then
+	[ $(rpm -q kernel | wc -l) -eq 1 ] && export no_initramfs=1
+fi
+
 if [[ $distro_version == "7"* ]]; then
  if [ -e /etc/modprobe.d/hyperv_pvdrivers.conf ]; then
   mv /etc/modprobe.d/hyperv_pvdrivers.conf /opt/files/
