@@ -13,7 +13,8 @@ GetDistroName()
 	if [[ $OracleDistroName == *Oracle* ]]; then
         	distro_name="Oracle"
     	else
-        	case $linuxString in*CentOS*)
+		case $linuxString in
+			*CentOS*)
                     		distro_name=CentOS
                 	;;
                 	*Red*)
@@ -344,12 +345,13 @@ function CheckRequiredSpaceForInstallation()
 }
 
 function CheckRequiredSpace()
-{	
+{
 	# 150MB(157286400 Bytes) minimum space is required
-    	MIN_SPACE_FOR_RAMFS_CREATION=157286400
-	
+	MIN_SPACE_FOR_RAMFS_CREATION=157286400
+
 	lib_module_folder="/lib/modules"
-    	boot_folder="/boot"
+	boot_folder="/boot"
+
 	root_partition=$(df $lib_module_folder | grep -v Used | awk '{ print $1}')
     	boot_partition=$(df $boot_folder | grep -v Used | awk '{ print $1}')
 
@@ -360,12 +362,10 @@ function CheckRequiredSpace()
 	boot_part_avail_space=$(($(stat -f --format="%f*%S" $boot_folder)))
 
 	lib_module_required_space=$(rpm --queryformat='%{SIZE}' -qp kmod-microsoft-hyper*x86_64.rpm)
-    	ramdisk_required_space=$(stat /boot/initramfs-$(uname -r).img --format="%s")
+	ramdisk_required_space=$(stat /boot/initramfs-$(uname -r).img --format="%s")
 
-    	boot_part_required_space=$ramdisk_required_space
-	
+	boot_part_required_space=$ramdisk_required_space
 	root_part_required_space=$(expr $MIN_SPACE_FOR_RAMFS_CREATION + $ramdisk_size_factor \* $ramdisk_required_space + $lib_module_required_space)
-
 	CheckRequiredSpaceForInstallation $root_part_avail_space $root_part_required_space $lib_module_folder 
 	ret=$?
 	if [ $ret -eq 1 ]; then
