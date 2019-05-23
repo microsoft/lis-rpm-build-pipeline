@@ -352,8 +352,8 @@ function CheckRequiredSpace()
 	lib_module_folder="/lib/modules"
 	boot_folder="/boot"
 
-	root_partition=$(df $lib_module_folder | grep -v Used | awk '{ print $1}')
-    	boot_partition=$(df $boot_folder | grep -v Used | awk '{ print $1}')
+	root_partition=$(df -P $lib_module_folder | grep -v Used | awk '{ print $1}')
+	boot_partition=$(df -P $boot_folder | grep -v Used | awk '{ print $1}')
 
 	ramdisk_size_factor=1
 	[ $root_partition != $boot_partition ] && ramdisk_size_factor=2
