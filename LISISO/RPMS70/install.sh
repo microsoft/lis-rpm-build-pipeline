@@ -8,6 +8,15 @@
 # Determine kernel architecture version 
 osbit=`uname -m`
 
+#List of errata kernel for RH7.0 distro needs special handling due to KABI changes
+errata_kerver_1='3.10.0-123.8.1'
+
+source ../commonfunctions.sh
+
+if IsInstalledKernelOlderThanErrataKernel $errata_kerver_1; then
+	cd  update1
+fi
+
 #Selecting appropriate rpm, 64 bit rpm for x86_64 based VM
 if [ "$osbit" == "x86_64" ]; then
        {

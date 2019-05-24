@@ -61,6 +61,7 @@ rm -rf LISISO/RPMS610/*.rpm
 
 # cleanup LIS 7.0
 rm -rf LISISO/RPMS70/*.rpm
+rm -rf LISISO/RPMS70/update1/*.rpm
 rm -rf LISISO/RPMS71/*.rpm
 rm -rf LISISO/RPMS72/*.rpm
 rm -rf LISISO/RPMS73/*.rpm
