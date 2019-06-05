@@ -44,6 +44,8 @@ distro_version="unknown"
 
 
 source commonfunctions.sh
+export LIS_INSTALL_BASE_DIR=$(pwd)
+
 #
 # Main script body
 #
@@ -86,28 +88,8 @@ if [[ $distro_version != "5"* ]]; then
 	[ $(rpm -q kernel | wc -l) -eq 1 ] && export no_initramfs=1
 fi
 
-if [[ $distro_version == "7"* ]]; then
- if [ -e /etc/modprobe.d/hyperv_pvdrivers.conf ]; then
-  mv /etc/modprobe.d/hyperv_pvdrivers.conf /opt/files/
- fi
-fi
-
 cd ${targetDir}
-
-#
-# If the daemons are left installed, the new rpms will fail to install
-#
-RemoveHypervDaemons
-
-#
-# Hyper-V tools conflicts with installation, removing the tool
-#
-RemoveHypervTools
-
-
-#
 # Invoke the release specific install script
-#
 echo "Invoking release specific install file in directory ${targetDir}"
 ./upgrade.sh
 
