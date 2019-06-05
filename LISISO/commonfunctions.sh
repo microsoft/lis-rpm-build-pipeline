@@ -171,7 +171,7 @@ IsKernelSupported()
 {
 	Distro=$1
 	InstalledKernVersion=$(uname -r)
-	SupportedVersion=`cat latestsupportedkernel | grep $Distro | cut -d: -f2`
+	SupportedVersion=`cat ${LIS_INSTALL_BASE_DIR}/latestsupportedkernel | grep $Distro | cut -d: -f2`
 	[ x"$SupportedVersion" == x ] && return 1
 
 	SupportedVersion=${SupportedVersion//\.el*.*/}
@@ -281,15 +281,51 @@ RemoveHypervTools()
 	fi
 }
 
+function RemoveConflictingModules()
+{
+	if [[ $distro_version == "7"* ]]; then
+		if [ -e /etc/modprobe.d/hyperv_pvdrivers.conf ];then
+			mv /etc/modprobe.d/hyperv_pvdrivers.conf /opt/files/
+		fi
+	fi
+	# If the daemons are left installed, the new rpms will fail to install
+	RemoveHypervDaemons
+
+	# Hyper-V tools conflicts with installation, removing the tool
+	RemoveHypervTools
+}
+
+function CheckLISCompatibility()
+{
+	RunLISCompatibilityCheck
+	ret=$?
+	if [ $ret -eq 2 ];then
+		# Fallback mechanism. Using static check.
+		IsKernelSupported "RHEL$distro_version"
+		[ $? -eq 0 ] &&
+			echo "Kernel-$(uname -r) not supported, Exiting." && exit 1
+	elif [ $ret -eq 0 ];then
+		echo -e "\nKernel-$(uname -r) not supported, installation aborted.\n"
+		exit 1
+	fi
+}
 
 function installbuildrpm()
 {
 	i=$1
+	source ${LIS_INSTALL_BASE_DIR}/lis_compatibility_check.sh
+	GetDistroVersion
 	cd "update${i}" &> /dev/null
 	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
 	msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
 	then
+		# Check lis compatibility with kernel
+		[[ $distro_version == "7"* ]] && CheckLISCompatibility
+
+		# Remove conflicting module before installation
+		RemoveConflictingModules
+
 		echo "Installing the Linux Integration Services for Microsoft Hyper-V..."
 		rpm -ivh $kmodrpm $msrpm 2>&1 | grep -v "mlx5_ib"
 		kmodexit=$?
@@ -306,11 +342,19 @@ function installbuildrpm()
 function upgradebuildrpm()
 {
 	i=$1
+	source ${LIS_INSTALL_BASE_DIR}/lis_compatibility_check.sh
+	GetDistroVersion
 	cd "update${i}" &> /dev/null
 	kmodrpm=`ls kmod-microsoft-hyper-v-*.x86_64.rpm`
 	msrpm=`ls microsoft-hyper-v-*.x86_64.rpm`
 	if [ "$kmodrpm" != "" ] && [ "$msrpm" != ""  ];
 	then
+		# Check lis compatibility with kernel
+		[[ $distro_version == "7"* ]] && CheckLISCompatibility
+
+		# Remove conflicting module before installation
+		RemoveConflictingModules
+
 		rpm -Uvh $kmodrpm $msrpm 2>&1 | grep -v "mlx5_ib"
 	        msexit=$?
         	if [ "$msexit" != 0 ]; then
