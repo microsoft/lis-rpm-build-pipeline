@@ -89,6 +89,12 @@ if [[ $distro_version != "5"* ]]; then
 fi
 
 cd ${targetDir}
+
+if [[ $distro_version != "7"* ]]; then
+	# Remove conflicting module before installation
+	RemoveConflictingModules
+fi
+
 # Invoke the release specific install script
 echo "Invoking release specific install file in directory ${targetDir}"
 ./upgrade.sh
