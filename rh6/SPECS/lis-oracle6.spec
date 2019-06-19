@@ -72,7 +72,6 @@ set -- *
 mkdir source
 mv "$@" source/
 sed -i 's/hv_context.guestid = generate_guest_id(0x20, LINUX_VERSION_CODE, 0);/hv_context.guestid = generate_guest_id(0x22, LINUX_VERSION_CODE, 0);/g' source/hv.c
-sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"autogen"/g' source/include/linux/hv_compat.h
 
 mkdir obj
 
