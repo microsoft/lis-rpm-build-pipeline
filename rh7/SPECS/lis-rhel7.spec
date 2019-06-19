@@ -71,7 +71,6 @@ cp tools/hv_fcopy_daemon.c %_sourcedir/
 set -- *
 mkdir source
 mv "$@" source/
-sed -i 's/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"master"/g' source/include/linux/hv_compat.h
 
 mkdir obj
 
