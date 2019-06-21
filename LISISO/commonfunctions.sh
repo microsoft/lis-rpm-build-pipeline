@@ -401,10 +401,13 @@ function CheckRequiredSpace()
 
 	ramdisk_size_factor=1
 	[ $root_partition != $boot_partition ] && ramdisk_size_factor=2
-
-	root_part_avail_space=$(($(stat -f --format="%f*%S" $lib_module_folder)))
-	boot_part_avail_space=$(($(stat -f --format="%f*%S" $boot_folder)))
-
+	if [[ $distro_version == 6* || $distro_version == 70 || $distro_version == 71 ]];then
+		root_part_avail_space=$(($(stat -f --format="%a*%S" $lib_module_folder)))
+		boot_part_avail_space=$(($(stat -f --format="%a*%S" $boot_folder)))
+	else
+		root_part_avail_space=$(($(stat -f --format="%f*%S" $lib_module_folder)))
+		boot_part_avail_space=$(($(stat -f --format="%f*%S" $boot_folder)))
+	fi
 	lib_module_required_space=$(rpm --queryformat='%{SIZE}' -qp kmod-microsoft-hyper*x86_64.rpm)
 	ramdisk_required_space=$(stat /boot/initramfs-$(uname -r).img --format="%s")
 
