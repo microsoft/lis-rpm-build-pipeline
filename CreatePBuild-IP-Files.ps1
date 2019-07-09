@@ -143,4 +143,4 @@ foreach ($nic in $NICs) {
 Set-Content -Value $RH5PbuildFile -Path .\RH5.pbuild -Force -Verbose
 Set-Content -Value $RH6PbuildFile -Path .\RH6.pbuild -Force -Verbose
 Set-Content -Value $RH7PbuildFile -Path .\RH7.pbuild -Force -Verbose
-Set-Content -Value $IPS -Path .\ip.sh -Force -Verbose
+Set-Content -Value $IPS -Path .\ips.sh -Force -Verbose
