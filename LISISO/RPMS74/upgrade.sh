@@ -1,11 +1,14 @@
 ################################################################################
 #
-# This script is to automate installation of Linux Integration Services for 
+# This script is to automate installation of Linux Integration Services for
 # Microsoft Hyper-V
 #
 ################################################################################
 
-source ../commonfunctions.sh
+update=0
+source ${LIS_INSTALL_BASE_DIR}/commonfunctions.sh
 
-checkrpms
-upgradebuildrpm
+GetUpdateNumber
+update=$?
+
+upgradebuildrpm $update
