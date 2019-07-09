@@ -1,21 +1,22 @@
 ################################################################################
 #
-# This script is to automate installation of Linux Integration Services for 
+# This script is to automate installation of Linux Integration Services for
 # Microsoft Hyper-V
 #
 ################################################################################
 
-#List of errata kernel for RH7.3 distro needs special handling due to KABI changes
-errata_kerver_1='3.10.0-514.10.2.el7.x86_64'
-errata_kerver_2='3.10.0-514.16.1.el7.x86_64'
+update_number=0
+source ${LIS_INSTALL_BASE_DIR}/commonfunctions.sh
 
-source ../commonfunctions.sh
+#List of errata kernel that needs special handling due to KABI changes
+file_errata_kernel_list="errata_kernel_list"
+[ -f $file_errata_kernel_list ] && ekernel_list=$(cat $file_errata_kernel_list | cut -d"=" -f2)
 
-if ! IsInstalledKernelOlderThanErrataKernel $errata_kerver_1; then
-        checkrpms
-	upgradebuildrpm
-elif ! IsInstalledKernelOlderThanErrataKernel $errata_kerver_2; then
-	upgradebuildrpm 1
-else
-	upgradebuildrpm 2
-fi
+for ekernel in $ekernel_list;do
+	if ! IsInstalledKernelOlderThanErrataKernel $ekernel;then
+		break
+	fi
+	update_number=$(expr $update_number + 1)
+done
+
+upgradebuildrpm $update_number
