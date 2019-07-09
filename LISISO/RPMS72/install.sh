@@ -5,7 +5,10 @@
 #
 ################################################################################
 
+update=0
 source ${LIS_INSTALL_BASE_DIR}/commonfunctions.sh
 
-checkrpms
-installbuildrpm
+GetUpdateNumber
+update=$?
+
+installbuildrpm $update
