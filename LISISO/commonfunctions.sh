@@ -114,8 +114,10 @@ GetDistroVersion()
 		# If a 7.x kernel
 		#
 		elif [ "3.10.0" == ${kernelVersion} ]; then
-			if [ ${kernelChange} -ge 958 ]; then
+			if [ ${kernelChange} -ge 1050 ]; then
                                 distro_version='unknown'
+                        elif [ ${kernelChange} -ge 1049 ]; then
+                                distro_version='77'
 			elif [ ${kernelChange} -ge 957 ]; then
                                 distro_version='76'
 			elif [ ${kernelChange} -ge 862 ]; then
