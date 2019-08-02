@@ -1,5 +1,7 @@
 #!/bin/bash
 
+arch="$1"
+
 #source the ips.sh
 . ./ips.sh
 
@@ -72,9 +74,10 @@ for line in $ips_contents; do
 
     #Copy the SRPMs
     if [[ x"$lis_srpm_build_destination" != x ]];then
-        #Copy only one source rpm for 64 bit and 32 bit rpms.
-        if [ $arch_source_dir != "i686" ];then
-	    scp -r root@${ip}:${lis_srpm_source}/* $lis_srpm_build_destination
-        fi
+        scp -r root@${ip}:${lis_srpm_source}/* $lis_srpm_build_destination
     fi
+
+    # For 32 bit build RPMS7X folders are not required and should be cleaned up.
+    [[ ! -z ${arch} && ${arch} == "x32" ]] && rm -rf LISISO/RPMS7* || echo "${arch} build"
+
 done

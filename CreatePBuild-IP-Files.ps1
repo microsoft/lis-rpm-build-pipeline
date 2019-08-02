@@ -1,6 +1,7 @@
 ﻿param (
     $ResourceGroupName="",
-    $secretsFile=""
+    $secretsFile="",
+    $arch=""
 )
 
 Function Register-AzureSubscription($secretsFile) {
@@ -117,6 +118,10 @@ $Counter = 0
 $NICs = Get-AzureRmNetworkInterface -ResourceGroupName $ResourceGroupName
 $IPS = $null
 foreach ($nic in $NICs) {
+    if($nic.Name -inotmatch $arch) {
+        continue
+    }
+
     $counter ++
     if($nic.Name.Split("_")[3].StartsWith("5")) {
         $RH5PbuildFile += "host:`tCentOS5.xVM$RH5VMCount`t$($nic.IpConfigurations.PrivateIpAddress)`t~/rpmbuild/SOURCES`tom`n"
