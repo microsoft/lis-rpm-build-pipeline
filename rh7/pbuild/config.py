@@ -484,7 +484,7 @@ class Configuration:
             process = subprocess.Popen(
                 [
                     'ssh', '-A', host,
-                    'grep github.com, ~/.ssh/known_hosts > /dev/null 2> /dev/null || ssh -o StrictHostKeyChecking=no -o HashKnownHosts=no -T git@github.com; grep github.com, ~/.ssh/known_hosts > /dev/null 2> /dev/null || ssh -o StrictHostKeyChecking=no -T git@github.com'
+                    'grep github.com, ~/.ssh/known_hosts > /dev/null 2> /dev/null || ssh -o StrictHostKeyChecking=no -o HashKnownHosts=no -T git@github.com; grep github.com, ~/.ssh/known_hosts > /dev/null 2> /dev/null || ssh -o StrictHostKeyChecking=no -T git@github.com; mkdir -p /root/rpmbuild; mkdir -p /root/rpmbuild/SPECS; mkdir -p /root/rpmbuild/SOURCES; mkdir -p /root/rpmbuild/SRPMS; mkdir -p /root/rpmbuild/RPMS;'
                 ],
                 stdin=subprocess.PIPE
                 )
