@@ -425,7 +425,7 @@ function CheckRequiredSpace()
 	root_part_avail_space=$(($(stat -f --format="%f*%S" $lib_module_folder)))
 	boot_part_avail_space=$(($(stat -f --format="%f*%S" $boot_folder)))
 
-	lib_module_required_space=$(rpm --queryformat='%{SIZE}' -qp kmod-microsoft-hyper*x86_64.rpm)
+	lib_module_required_space=$(rpm --queryformat='%{SIZE}' -qp kmod-microsoft-hyper*$(uname -m).rpm)
 	ramdisk_required_space=$(stat /boot/initramfs-$(uname -r).img --format="%s")
 
 	boot_part_required_space=$ramdisk_required_space
