@@ -37,7 +37,7 @@ for line in $ips_contents; do
         if [[ "$update_number" =~ "update" ]]; then
             lis_rpm_build_destination="${lis_rpm_build_destination}_UPDATE"
         fi
-        lis_srpm_build_destination="${lis_rpm_build_destination}/lis-$version/"
+        lis_srpm_build_destination="${lis_rpm_build_destination}/"
         lis_rpm_build_destination="${lis_rpm_build_destination}/lis-$version/${arch_destination_dir}"
     elif [[ "$version" =~ ^6.* ]]; then
         if [[ "$update_number" =~ "update" ]]; then
@@ -68,8 +68,11 @@ for line in $ips_contents; do
 	kernel=$(ssh root@$ip "uname -r" 2> /dev/null)
 	echo "errata_kerver_$update_number=$kernel" >> "$lis_rpm_install_destination/errata_kernel_list"
 
-	#Source rpms need not to be copied for the update folder.
-	lis_srpm_build_destination=""
+	# RH5X needs to be handled differently as updates are created as seperate RPMS folder.
+	if [[ ! "$version" =~ ^5.* ]]; then
+		#Source rpms need not to be copied for the update folder.
+		lis_srpm_build_destination=""
+	fi
     fi
 
     #Copy the SRPMs
