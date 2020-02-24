@@ -50,7 +50,7 @@ GetDistroVersion()
 		# If a 5.x kernel
 		#
 		if [ "2.6.18" == ${kernelVersion} ]; then
-			if [ ${kernelChange} -ge 419 ]; then
+			if [ ${kernelChange} -gt 419 ]; then
                                 distro_version='unknown'
 			elif [ ${kernelChange} -ge 411 ]; then
 				distro_version='511_UPDATE'
