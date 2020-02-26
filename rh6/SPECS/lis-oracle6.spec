@@ -105,9 +105,9 @@ install    -m0644 source/hyperv_pvdrivers.conf $RPM_BUILD_ROOT/etc/modprobe.d/
 install -d -m0755 $RPM_BUILD_ROOT/sbin
 install -m0755 source/lsvmbus $RPM_BUILD_ROOT/sbin/
 install -d -m0755 $RPM_BUILD_ROOT/usr/sbin
-install -m0755 source/hv_get_dns_info $RPM_BUILD_ROOT/usr/sbin/
-install -m0755 source/hv_get_dhcp_info $RPM_BUILD_ROOT/usr/sbin/
-install -m0755 source/hv_set_ifconfig $RPM_BUILD_ROOT/usr/sbin/
+install -m0755 source/hv_get_dns_info $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
+install -m0755 source/hv_get_dhcp_info $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
+install -m0755 source/hv_set_ifconfig $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
 install    -m0755 source/tools/hv_kvp_daemon $RPM_BUILD_ROOT/usr/sbin/
 install    -m0755 source/tools/hv_fcopy_daemon $RPM_BUILD_ROOT/usr/sbin/
 install    -m0755 source/tools/hv_vss_daemon $RPM_BUILD_ROOT/usr/sbin/
@@ -227,9 +227,9 @@ fi
 /usr/sbin/hv_vss_daemon
 /etc/init.d/hv_fcopy_daemon
 /usr/sbin/hv_fcopy_daemon
-/usr/sbin/hv_get_dns_info
-/usr/sbin/hv_get_dhcp_info
-/usr/sbin/hv_set_ifconfig
+/usr/libexec/hypervkvpd/hv_get_dns_info
+/usr/libexec/hypervkvpd/hv_get_dhcp_info
+/usr/libexec/hypervkvpd/hv_set_ifconfig
 /opt/files/
 /sbin/lsvmbus
 %changelog
