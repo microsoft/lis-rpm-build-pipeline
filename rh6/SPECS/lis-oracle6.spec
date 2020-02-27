@@ -104,10 +104,11 @@ install -d -m0755 $RPM_BUILD_ROOT/etc/modprobe.d
 install    -m0644 source/hyperv_pvdrivers.conf $RPM_BUILD_ROOT/etc/modprobe.d/
 install -d -m0755 $RPM_BUILD_ROOT/sbin
 install -m0755 source/lsvmbus $RPM_BUILD_ROOT/sbin/
-install -d -m0755 $RPM_BUILD_ROOT/usr/sbin
+install -d -m0755 $RPM_BUILD_ROOT/usr/libexec/hypervkvpd
 install -m0755 source/hv_get_dns_info $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
 install -m0755 source/hv_get_dhcp_info $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
 install -m0755 source/hv_set_ifconfig $RPM_BUILD_ROOT/usr/libexec/hypervkvpd/
+install -d -m0755 $RPM_BUILD_ROOT/usr/sbin
 install    -m0755 source/tools/hv_kvp_daemon $RPM_BUILD_ROOT/usr/sbin/
 install    -m0755 source/tools/hv_fcopy_daemon $RPM_BUILD_ROOT/usr/sbin/
 install    -m0755 source/tools/hv_vss_daemon $RPM_BUILD_ROOT/usr/sbin/
