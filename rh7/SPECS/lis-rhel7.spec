@@ -30,14 +30,14 @@ Buildarch: i686
 %define releasetag public
 %define release %(date +%Y%m%d)
 %define _unpackaged_files_terminate_build 0
-Name:			microsoft-hyper-v
+Name:			microsoft-hyper-v-rdma
 
 %ifarch x86_64
 BuildRequires:          %kernel_module_package_buildreqs
 %else
 BuildRequires:          %kernel_module_package_buildreqs
 %endif
-Requires:               microsoft-hyper-v-kmod = master
+Requires:               microsoft-hyper-v-rdma-kmod = master
 License:		GPLv2+
 Group:			System/Kernel
 Summary:		Microsoft hyper-v drivers and utilities

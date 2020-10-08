@@ -78,16 +78,10 @@ select: om
 
 # Lis 4.0 branch build rpm
 
-host:   centos70x64     	192.168.222.97      ~/rpmbuild/SOURCES       om
-host:   centos70x64_UPDATE1	192.168.222.116     ~/rpmbuild/SOURCES       om
-host:   centos71x64		192.168.222.6       ~/rpmbuild/SOURCES       om
-host:   centos72x64     	192.168.222.8       ~/rpmbuild/SOURCES       om
-host:   centos73x64     	192.168.222.5       ~/rpmbuild/SOURCES       om
-host:   centos73x64_UPDATE1     192.168.222.10       ~/rpmbuild/SOURCES       om
-host:   centos73x64_UPDATE2     192.168.222.49       ~/rpmbuild/SOURCES       om
-host:   centos74x64     	192.168.222.4       ~/rpmbuild/SOURCES       om
-host:   centos75x64		192.168.222.30       ~/rpmbuild/SOURCES       om
-host:   centos75x64_UPDATE1    192.168.222.93       ~/rpmbuild/SOURCES       om
-host:   centos76x64	        192.168.222.100       ~/rpmbuild/SOURCES       om
+host:   centos71x64		192.168.222.72       ~/rpmbuild/SOURCES       om
+host:   centos72x64     	192.168.222.56       ~/rpmbuild/SOURCES       om
+host:   centos73x64     	192.168.222.7        ~/rpmbuild/SOURCES       om
+host:   centos74x64     	192.168.222.71       ~/rpmbuild/SOURCES       om
+host:   centos75x64		192.168.222.108      ~/rpmbuild/SOURCES       om
 
-logdir: /root/test/lis-rpm-build-pipeline/Log/rh7
+logdir: /root/4.3.5_rdma_build/lis-rpm-build-pipeline/Log/rh7

@@ -19,7 +19,7 @@ def run(cmd):
  return output
 
 def updatebuildname(path, buildname):
- regex='microsoft-hyper-v-kmod ='
+ regex='microsoft-hyper-v-rdma-kmod ='
 
  file_list = []
  linetosearch =[]
